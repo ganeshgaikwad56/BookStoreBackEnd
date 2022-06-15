@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d5fc23b5-5247-4bf1-90a7-23efe3e763f0": {
+      "ProjectGuid": "d5fc23b5-5247-4bf1-90a7-23efe3e763f0",
+      "DisplayName": "BookStore",
+      "ColorIndex": 0
+    },
+    "90f29c63-8b5c-4ed5-b78f-f47acd3b340e": {
+      "ProjectGuid": "90f29c63-8b5c-4ed5-b78f-f47acd3b340e",
+      "DisplayName": "RepositoryLayer",
+      "ColorIndex": 1
+    },
+    "0beab267-fddf-448b-ab54-8a36a0451ef0": {
+      "ProjectGuid": "0beab267-fddf-448b-ab54-8a36a0451ef0",
+      "DisplayName": "CommonLayer",
+      "ColorIndex": 2
+    },
+    "73138c6e-f7ad-4a9a-857d-0524ec5fa7e7": {
+      "ProjectGuid": "73138c6e-f7ad-4a9a-857d-0524ec5fa7e7",
+      "DisplayName": "BusinessLayer",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
