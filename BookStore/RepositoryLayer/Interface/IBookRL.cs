@@ -8,5 +8,6 @@ namespace RepositoryLayer.Interface
     public interface IBookRL
     {
         public AddBookModel AddBook(AddBookModel book);
+        public UpdateBookModel UpdateBook(UpdateBookModel updatebook);
     }
 }

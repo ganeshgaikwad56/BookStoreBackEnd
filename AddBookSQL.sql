@@ -10,6 +10,9 @@ DiscountPrice decimal,
 BookDetails varchar(255),
 BookImage varchar(255),
 );
+
+
+select *from Books
 ----Add Procedure  for AddBook----
 create procedure AddBook
 (
@@ -28,4 +31,31 @@ Insert into Books(BookName, authorName, rating, totalview, originalPrice,
 discountPrice, BookDetails, bookImage)
 values (@BookName, @authorName, @rating, @totalView ,@originalPrice, @discountPrice,
 @BookDetails, @bookImage);
+End;
+
+----Store procedure for update book--
+
+create procedure UpdateBook
+(
+@BookId int,
+@BookName varchar(255),
+@authorName varchar(255),
+@rating int,
+@totalView int,
+@originalPrice Decimal,
+@discountPrice Decimal,
+@BookDetails varchar(255),
+@bookImage varchar(255)
+)
+as
+BEGIN
+Update Books set BookName = @BookName, 
+authorName = @authorName,
+rating = @rating,
+totalView =@totalView,
+originalPrice= @originalPrice,
+discountPrice = @discountPrice,
+BookDetails = @BookDetails,
+bookImage =@bookImage
+where BookId = @BookId;
 End;
