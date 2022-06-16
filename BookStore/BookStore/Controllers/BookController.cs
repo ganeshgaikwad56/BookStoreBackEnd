@@ -51,5 +51,68 @@ namespace BookStore.Controllers
                 return this.BadRequest(new { Success = false, message = ex.Message });
             }
         }
+
+
+        [HttpDelete("DeleteBook/{BookId}")]
+        public IActionResult DeleteBook(int BookId)
+        {
+            try
+            {
+                if (this.bookBL.DeleteBook(BookId))
+                {
+                    return this.Ok(new { Success = true, message = "Book Deleted Sucessfully" });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "Soory! please Enter Valid Book Id" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Success = false, message = ex.Message });
+            }
+        }
+
+        [HttpGet("{BookId}/Get")]
+        public IActionResult GetBookByBookId(int BookId)
+        {
+            try
+            {
+                var book = this.bookBL.GetBookByBookId(BookId);
+                if (book != null)
+                {
+                    return this.Ok(new { Success = true, message = "Book Detail Fetched Sucessfully", Response = book });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "Soory! Please Enter Valid Book Id" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Success = false, message = ex.Message });
+            }
+        }
+
+        [HttpGet("GetAllBook")]
+        public IActionResult GetAllBooks()
+        {
+            try
+            {
+                var updatedBookDetail = this.bookBL.GetAllBooks();
+                if (updatedBookDetail != null)
+                {
+                    return this.Ok(new { Success = true, message = "Book Detail Fetched Sucessfully", Response = updatedBookDetail });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "Sorry! Wrong credentials" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Success = false, message = ex.Message });
+            }
+        }
     }
 }

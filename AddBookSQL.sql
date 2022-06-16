@@ -59,3 +59,34 @@ BookDetails = @BookDetails,
 bookImage =@bookImage
 where BookId = @BookId;
 End;
+
+-------Procedure for delete----
+create procedure DeleteBook
+(
+@BookId int
+)
+as
+BEGIN
+Delete Books 
+where BookId = @BookId;
+End;
+
+----procedure for get book by id-----
+
+create procedure GetBookByBookId
+(
+@BookId int
+)
+as
+BEGIN
+select * from Books
+where BookId = @BookId;
+End;
+
+----Procedure for getAllBook----
+
+create procedure GetAllBook
+as
+BEGIN
+	select * from Books;
+End;

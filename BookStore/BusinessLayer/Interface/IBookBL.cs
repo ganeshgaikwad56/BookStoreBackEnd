@@ -9,5 +9,8 @@ namespace BusinessLayer.Interface
     {
         public AddBookModel AddBook(AddBookModel book);
         public UpdateBookModel UpdateBook(UpdateBookModel updatebook);
+        public bool DeleteBook(int BookId);
+        public AddBookModel GetBookByBookId(int BookId);
+        public List<AddBookModel> GetAllBooks();
     }
 }
