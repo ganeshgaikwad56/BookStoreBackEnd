@@ -54,7 +54,7 @@ namespace RepositoryLayer.Service
                     }
 
                     this.sqlConnection.Close();
-                    admin.Token = this.GenerateJWTToken(admin.Email, AdminId);
+                    admin.Token = this.GenerateJWTTokenForAdmin(admin.Email, AdminId);
                     return admin;
                 }
                 else
@@ -72,7 +72,7 @@ namespace RepositoryLayer.Service
                 this.sqlConnection.Close();
             }
         }
-        private string GenerateJWTToken(string Email, int AdminId)
+        private string GenerateJWTTokenForAdmin(string Email, int AdminId)
         {
             //generate token
 

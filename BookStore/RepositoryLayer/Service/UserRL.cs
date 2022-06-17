@@ -94,8 +94,9 @@ namespace RepositoryLayer.Service
                 {
                     CommandType = CommandType.StoredProcedure
                 };
+                var passwordToEncript = EncodePasswordToBase64(userLog.Password);
                 cmd.Parameters.AddWithValue("@Email", userLog.Email);
-                cmd.Parameters.AddWithValue("@Password", userLog.Password);
+                cmd.Parameters.AddWithValue("@Password", passwordToEncript);
 
                 this.sqlConnection.Open();
 

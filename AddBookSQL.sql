@@ -10,42 +10,47 @@ DiscountPrice decimal,
 BookDetails varchar(255),
 BookImage varchar(255),
 );
-
+alter table Books
+ALTER column Rating varchar(100)
+alter table Books
+ADD Quantity int
 
 select *from Books
 ----Add Procedure  for AddBook----
-create procedure AddBook
+alter procedure AddBook
 (
 @BookName varchar(255),
 @authorName varchar(255),
-@rating int,
+@rating varchar(100),
 @totalView int,
 @originalPrice Decimal,
 @discountPrice Decimal,
 @BookDetails varchar(255),
-@bookImage varchar(255)
+@bookImage varchar(255),
+@Quantity int
 )
 as
 BEGIN
 Insert into Books(BookName, authorName, rating, totalview, originalPrice, 
-discountPrice, BookDetails, bookImage)
+discountPrice, BookDetails, bookImage, Quantity)
 values (@BookName, @authorName, @rating, @totalView ,@originalPrice, @discountPrice,
-@BookDetails, @bookImage);
+@BookDetails, @bookImage,@Quantity);
 End;
 
 ----Store procedure for update book--
 
-create procedure UpdateBook
+alter procedure UpdateBook
 (
 @BookId int,
 @BookName varchar(255),
 @authorName varchar(255),
-@rating int,
+@rating varchar(100),
 @totalView int,
 @originalPrice Decimal,
 @discountPrice Decimal,
 @BookDetails varchar(255),
-@bookImage varchar(255)
+@bookImage varchar(255),
+@Quantity int
 )
 as
 BEGIN
@@ -56,7 +61,8 @@ totalView =@totalView,
 originalPrice= @originalPrice,
 discountPrice = @discountPrice,
 BookDetails = @BookDetails,
-bookImage =@bookImage
+bookImage =@bookImage,
+Quantity = @Quantity
 where BookId = @BookId;
 End;
 

@@ -38,6 +38,7 @@ namespace RepositoryLayer.Service
                     cmd.Parameters.AddWithValue("@discountPrice", book.DiscountPrice);
                     cmd.Parameters.AddWithValue("@BookDetails", book.BookDetails);
                     cmd.Parameters.AddWithValue("@bookImage", book.BookImage);
+                    cmd.Parameters.AddWithValue("@Quantity", book.Quantity);
                     sqlConnection.Open();
                     int result = cmd.ExecuteNonQuery();
                     //ExecuteNonQuery method is used to execute SQL Command or the storeprocedure performs, INSERT, UPDATE or Delete operations.
@@ -79,6 +80,7 @@ namespace RepositoryLayer.Service
                     cmd.Parameters.AddWithValue("@discountPrice", updatebook.DiscountPrice);
                     cmd.Parameters.AddWithValue("@BookDetails", updatebook.BookDetails);
                     cmd.Parameters.AddWithValue("@bookImage", updatebook.BookImage);
+                    cmd.Parameters.AddWithValue("@Quantity", updatebook.Quantity);
                     sqlConnection.Open();
                     int result = cmd.ExecuteNonQuery();
                     //ExecuteNonQuery method is used to execute SQL Command or the storeprocedure performs, INSERT, UPDATE or Delete operations.
@@ -152,12 +154,13 @@ namespace RepositoryLayer.Service
                     {
                         bookModel.BookName = reader["BookName"].ToString();
                         bookModel.AuthorName = reader["AuthorName"].ToString();
-                        bookModel.Rating = Convert.ToInt32(reader["Rating"]);
+                        bookModel.Rating = reader["Rating"].ToString();
                         bookModel.TotalView = Convert.ToInt32(reader["TotalView"]);
                         bookModel.OriginalPrice = Convert.ToInt32(reader["OriginalPrice"]);
                         bookModel.DiscountPrice = Convert.ToInt32(reader["DiscountPrice"]);
                         bookModel.BookDetails = reader["BookDetails"].ToString();
                         bookModel.BookImage = reader["BookImage"].ToString();
+                        bookModel.Quantity = Convert.ToInt32(reader["Quantity"]);
                     }
 
                     this.sqlConnection.Close();
@@ -200,7 +203,7 @@ namespace RepositoryLayer.Service
                             BookId = Convert.ToInt32(reader["BookId"]),
                             BookName = reader["BookName"].ToString(),
                             AuthorName = reader["AuthorName"].ToString(),
-                            Rating = Convert.ToInt32(reader["Rating"]),
+                            Rating = reader["Rating"].ToString(),
                             TotalView = Convert.ToInt32(reader["TotalView"]),
                             
                             OriginalPrice = Convert.ToDecimal(reader["OriginalPrice"]),
@@ -208,8 +211,9 @@ namespace RepositoryLayer.Service
                           
                             BookDetails = reader["BookDetails"].ToString(),
                             BookImage = reader["bookImage"].ToString(),
-                            //BookCount = Convert.ToInt32(reader["BookCount"])
-                        });
+                            Quantity = Convert.ToInt32(reader["Quantity"]),
+                        //BookCount = Convert.ToInt32(reader["BookCount"])
+                    });
                     }
 
                     this.sqlConnection.Close();
