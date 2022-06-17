@@ -54,7 +54,7 @@ namespace RepositoryLayer.Service
                     }
 
                     this.sqlConnection.Close();
-                    admin.Token = this.GenerateJWTTokenForAdmin(admin.Email, AdminId);
+                    admin.Token = this.GenerateJWTTokenForAdmin(adminLogin, AdminId);
                     return admin;
                 }
                 else
@@ -72,7 +72,7 @@ namespace RepositoryLayer.Service
                 this.sqlConnection.Close();
             }
         }
-        private string GenerateJWTTokenForAdmin(string Email, int AdminId)
+        private string GenerateJWTTokenForAdmin(AdminLoginModel adminLogin,int AdminId)
         {
             //generate token
 
@@ -82,7 +82,8 @@ namespace RepositoryLayer.Service
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("Email", Email),
+                    new Claim(ClaimTypes.Role, "Admin"),
+                    new Claim("Email",adminLogin.Email),
                     new Claim("AdminId",AdminId.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(24),

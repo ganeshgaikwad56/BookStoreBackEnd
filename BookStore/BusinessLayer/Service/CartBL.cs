@@ -27,11 +27,35 @@ namespace BusinessLayer.Service
             }
         }
 
+        public List<ViewCartModel> GetCartDetailsByUserid(int UserId)
+        {
+            try
+            {
+                return this.cartRL.GetCartDetailsByUserid(UserId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public string RemoveFromCart(int CartId)
         {
             try
             {
                 return this.cartRL.RemoveFromCart(CartId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public CartModel UpdateCart(int CartId, CartModel cartModel, int UserId)
+        {
+            try
+            {
+                return this.cartRL.UpdateCart(CartId, cartModel, UserId);
             }
             catch (Exception)
             {
