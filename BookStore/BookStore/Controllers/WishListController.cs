@@ -1,0 +1,88 @@
+﻿using BusinessLayer.Interface;
+using CommonLayer.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+
+namespace BookStore.Controllers
+{
+    public class WishListController : ControllerBase
+    {
+        private readonly IWishListBL wishBL;
+
+        public WishListController(IWishListBL wishBL)
+        {
+            this.wishBL = wishBL;
+        }
+
+        [Authorize(Roles = Role.User)]
+        [HttpPost("AddWishList")]
+        public IActionResult AddWishList(WishListModel wishlistModel, int userId)
+        {
+            try
+            {
+
+                var cartData = this.wishBL.AddWishList(wishlistModel, userId);
+                if (cartData != null)
+                {
+                    return this.Ok(new { success = true, message = "Book Added SuccessFully in WishList ", response = cartData });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "WishList Add Unsuccessfully" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Success = false, response = ex.Message });
+            }
+        }
+
+        [Authorize(Roles = Role.User)]
+        [HttpDelete("DeleteWishList/{WishlistId}")]
+        public IActionResult DeleteWishList(int WishlistId)
+        {
+            try
+            {
+                var result = this.wishBL.DeleteWishList(WishlistId);
+                if (result != false)
+                {
+                    return this.Ok(new { status = true, message = $"Delete cart Successful", Data = result });
+
+                }
+                return this.BadRequest(new { status = true, message = $" cart delete Failed", Data = result });
+
+            }
+            catch
+            {
+
+                throw;
+            }
+
+
+        }
+
+        [Authorize(Roles = Role.User)]
+        [HttpPost("GetWishlistDetailsByUserid/{userId}")]
+        public IActionResult GetWishlistDetailsByUserid(int userId)
+        {
+            try
+            {
+
+                var cartData = this.wishBL.GetWishlistDetailsByUserid(userId);
+                if (cartData != null)
+                {
+                    return this.Ok(new { success = true, message = "Wish List fetched successful ", response = cartData });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "Sorry! Failed to fetch" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Success = false, response = ex.Message });
+            }
+        }
+    }
+}

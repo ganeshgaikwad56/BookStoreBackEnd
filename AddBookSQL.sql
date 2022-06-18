@@ -96,3 +96,6 @@ as
 BEGIN
 	select * from Books;
 End;
+
+
+Alter table Books Add AdminId int Foreign key(AdminId) References AdminTable(AdminId);

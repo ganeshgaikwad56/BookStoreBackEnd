@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -15,7 +16,7 @@ namespace BookStore.Controllers
         {
             this.bookBL = bookBL;
         }
-
+        [Authorize(Roles = Role.Admin)]
         [HttpPost("AddBook")]
         public IActionResult AddBook(AddBookModel book)
         {
@@ -33,7 +34,7 @@ namespace BookStore.Controllers
                 return this.BadRequest(new { Success = false, message = ex.Message });
             }
         }
-
+        [Authorize(Roles = Role.Admin)]
         [HttpPost("UpdateBook")]
         public IActionResult UpdateBook(UpdateBookModel updatebook)
         {
@@ -52,7 +53,7 @@ namespace BookStore.Controllers
             }
         }
 
-
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("DeleteBook/{BookId}")]
         public IActionResult DeleteBook(int BookId)
         {
