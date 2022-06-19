@@ -27,11 +27,11 @@ namespace BusinessLayer.Service
             }
         }
 
-        public bool DeleteWishList(int WishlistId)
+        public bool DeleteWishList(int WishlistId, int userId)
         {
             try
             {
-                return this.wishRL.DeleteWishList(WishlistId);
+                return this.wishRL.DeleteWishList(WishlistId,userId);
             }
             catch (Exception)
             {

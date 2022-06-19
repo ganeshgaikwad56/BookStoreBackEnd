@@ -3,9 +3,12 @@ using CommonLayer.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace BookStore.Controllers
 {
+    [ApiController]  // Handle the Client error, Bind the Incoming data with parameters using more attribute
+    [Route("[controller]")]
     public class WishListController : ControllerBase
     {
         private readonly IWishListBL wishBL;
@@ -17,11 +20,11 @@ namespace BookStore.Controllers
 
         [Authorize(Roles = Role.User)]
         [HttpPost("AddWishList")]
-        public IActionResult AddWishList(WishListModel wishlistModel, int userId)
+        public IActionResult AddWishList(WishListModel wishlistModel)
         {
             try
             {
-
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
                 var cartData = this.wishBL.AddWishList(wishlistModel, userId);
                 if (cartData != null)
                 {
@@ -44,7 +47,8 @@ namespace BookStore.Controllers
         {
             try
             {
-                var result = this.wishBL.DeleteWishList(WishlistId);
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+                var result = this.wishBL.DeleteWishList(WishlistId, userId);
                 if (result != false)
                 {
                     return this.Ok(new { status = true, message = $"Delete cart Successful", Data = result });
@@ -64,11 +68,11 @@ namespace BookStore.Controllers
 
         [Authorize(Roles = Role.User)]
         [HttpPost("GetWishlistDetailsByUserid/{userId}")]
-        public IActionResult GetWishlistDetailsByUserid(int userId)
+        public IActionResult GetWishlistDetailsByUserid()
         {
             try
             {
-
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
                 var cartData = this.wishBL.GetWishlistDetailsByUserid(userId);
                 if (cartData != null)
                 {

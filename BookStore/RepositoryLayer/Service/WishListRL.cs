@@ -54,7 +54,7 @@ namespace RepositoryLayer.Service
             }
         }
 
-        public bool DeleteWishList(int WishlistId)
+        public bool DeleteWishList(int WishlistId, int userId)
         {
             sqlConnection = new SqlConnection(this.configuration["ConnectionStrings:BookStore"]);
             try
@@ -66,6 +66,7 @@ namespace RepositoryLayer.Service
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@WishListId", WishlistId);
+                    cmd.Parameters.AddWithValue("@UserId", userId);
                     sqlConnection.Open();
                     int result = cmd.ExecuteNonQuery();
                     sqlConnection.Close();
