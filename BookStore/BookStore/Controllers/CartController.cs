@@ -17,11 +17,11 @@ namespace BookStore.Controllers
             this.cartBL = cartBL;
         }
         [HttpPost("AddCart/{userId}")]
-        public IActionResult AddCart(CartModel cart,int userId)
+        public IActionResult AddCart(CartModel cart)
         {
             try
             {
-               
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
                 var cartData = this.cartBL.AddCart(cart, userId);
                 if (cartData != null)
                 {

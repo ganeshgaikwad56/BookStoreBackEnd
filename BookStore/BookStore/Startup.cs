@@ -48,6 +48,10 @@ namespace BookStore
 
             services.AddTransient<IWishListRL, WishListRL>();
             services.AddTransient<IWishListBL, WishListBL>();
+
+            services.AddTransient<IAddressRL, AddressRL>();
+            services.AddTransient<IAddressBL, AddressBL>();
+
             services.AddSwaggerGen(setup =>
             {
                 // Include 'SecurityScheme' to use JWT Authentication
