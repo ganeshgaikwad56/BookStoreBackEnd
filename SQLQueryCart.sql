@@ -25,9 +25,10 @@ End
 
 ------procedure remove------
 
-Create proc RemoveFromCart
+alter proc RemoveFromCart
 (
-@CartId int
+@CartId int,
+@UserId int
 )
 As
 Begin

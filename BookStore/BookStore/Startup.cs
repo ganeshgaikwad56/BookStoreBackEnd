@@ -58,6 +58,16 @@ namespace BookStore
             services.AddTransient<IFeedbackRL, FeedbackRL>();
             services.AddTransient<IFeedbackBL, FeedbackBL>();
 
+            //Configur CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                name: "AllowOrigin",
+              builder => {
+                  builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+              });
+            });
+
             services.AddSwaggerGen(setup =>
             {
                 // Include 'SecurityScheme' to use JWT Authentication
@@ -102,6 +112,8 @@ namespace BookStore
 
                 };
             });
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
 
@@ -120,6 +132,7 @@ namespace BookStore
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("AllowOrigin");
 
             app.UseHttpsRedirection();
 

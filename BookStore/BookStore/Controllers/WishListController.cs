@@ -67,7 +67,7 @@ namespace BookStore.Controllers
         }
 
         [Authorize(Roles = Role.User)]
-        [HttpPost("GetWishlistDetailsByUserid/{userId}")]
+        [HttpGet("GetWishlistDetailsByUserid")]
         public IActionResult GetWishlistDetailsByUserid()
         {
             try

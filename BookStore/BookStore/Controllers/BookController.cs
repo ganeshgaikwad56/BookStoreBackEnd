@@ -35,7 +35,7 @@ namespace BookStore.Controllers
             }
         }
         [Authorize(Roles = Role.Admin)]
-        [HttpPost("UpdateBook")]
+        [HttpPut("UpdateBook")]
         public IActionResult UpdateBook(UpdateBookModel updatebook)
         {
             try
@@ -73,7 +73,7 @@ namespace BookStore.Controllers
                 return this.BadRequest(new { Success = false, message = ex.Message });
             }
         }
-
+        [Authorize]
         [HttpGet("GetBookByBookId/{BookId}")]
         public IActionResult GetBookByBookId(int BookId)
         {
@@ -94,7 +94,7 @@ namespace BookStore.Controllers
                 return this.BadRequest(new { Success = false, message = ex.Message });
             }
         }
-
+        [Authorize]
         [HttpGet("GetAllBook")]
         public IActionResult GetAllBooks()
         {

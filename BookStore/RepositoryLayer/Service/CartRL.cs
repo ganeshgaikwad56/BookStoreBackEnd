@@ -54,7 +54,7 @@ namespace RepositoryLayer.Service
             }
         }
 
-        public string RemoveFromCart(int CartId)
+        public string RemoveFromCart(int CartId,int userId)
         {
             sqlConnection = new SqlConnection(this.configuration["ConnectionStrings:BookStore"]);
             try
@@ -66,6 +66,7 @@ namespace RepositoryLayer.Service
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@CartId", CartId);
+                    cmd.Parameters.AddWithValue("@UserId", userId);
                     sqlConnection.Open();
                     int result = cmd.ExecuteNonQuery();
                     sqlConnection.Close();

@@ -39,11 +39,11 @@ namespace BusinessLayer.Service
             }
         }
 
-        public string RemoveFromCart(int CartId)
+        public string RemoveFromCart(int CartId,int userId)
         {
             try
             {
-                return this.cartRL.RemoveFromCart(CartId);
+                return this.cartRL.RemoveFromCart(CartId,userId);
             }
             catch (Exception)
             {

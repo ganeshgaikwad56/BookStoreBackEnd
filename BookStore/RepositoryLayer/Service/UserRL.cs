@@ -112,8 +112,6 @@ namespace RepositoryLayer.Service
                         user.Email = Convert.ToString(reader["Email"]);
                         user.Password = Convert.ToString(reader["Password"]);
                         UserId = Convert.ToInt32(reader["UserId"]);
-
-
                     }
 
                     this.sqlConnection.Close();

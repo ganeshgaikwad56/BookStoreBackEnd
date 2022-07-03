@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "YJwHhU89UU3DOmOVNbTTFt2q3c94CeruZZtYYyxOX9CUT9+ZDhnGmOz/uWTw7Z2kBQJaT2CDfPY9nkjTmUtJKw==",
+  "dgSpecHash": "Cjq8ZIxKuAe87vRhwFFIRbUx4PftmbP+F9QC6lVA2TIMk6zPGGSqguhuiOyrUIWfv5xuU8fp0FsapS1ibCnfEg==",
   "success": true,
   "projectFilePath": "D:\\CFP\\BookStore\\BookStore\\CommonLayer\\CommonLayer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.2\\microsoft.aspnetcore.jsonpatch.3.1.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.2\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

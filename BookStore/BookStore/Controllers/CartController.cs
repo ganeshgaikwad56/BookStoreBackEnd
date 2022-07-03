@@ -18,7 +18,7 @@ namespace BookStore.Controllers
             this.cartBL = cartBL;
         }
         [Authorize(Roles = Role.User)]
-        [HttpPost("AddCart/{userId}")]
+        [HttpPost("AddCart")]
         public IActionResult AddCart(CartModel cart)
         {
             try
@@ -45,8 +45,8 @@ namespace BookStore.Controllers
         {
             try
             {
-                //int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
-                var result = this.cartBL.RemoveFromCart(CartId);
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+                var result = this.cartBL.RemoveFromCart(CartId,userId);
                 if (result != null)
                 {
                     return this.Ok(new { status = true, message = $"Delete cart Successful", Data = result });
@@ -86,7 +86,7 @@ namespace BookStore.Controllers
             }
         }
         [Authorize(Roles = Role.User)]
-        [HttpPost("UpdateCart/{CartId}")]
+        [HttpPut("UpdateCart/{CartId}")]
         public IActionResult UpdateCart(int CartId, CartModel cartModel)
         {
             try

@@ -27,7 +27,7 @@ namespace RepositoryLayer.Service
                                    "<body style=\"background -color:#ff7f26;text-align:center;\"> " +
                                    "<h1 style=\"color:#051a80;\">Hello Ganesh</h1>" +
                                    "<h2 style=\"color:#800000;\">Please tab on the below link to change your password.</h2>" +
-                                   "</body>" + $"http://localhost:4200/reset-password/{token}" +
+                                   "</body>" + $"http://localhost:4200/reset/{token}" +
 
                                     "<html>";
                 client.Send(messageObj);

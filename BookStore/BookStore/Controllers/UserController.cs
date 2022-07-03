@@ -19,7 +19,7 @@ namespace BookStore.Controllers
             this.userBL = userBL;
         }
 
-        [HttpPost("register")]
+        [HttpPost("Registration")]
         public IActionResult Registration(UserRegModel UserReg)
         {
             try
@@ -36,7 +36,7 @@ namespace BookStore.Controllers
                 return this.BadRequest(new { Success = false, message = ex.Message });
             }
         }
-        [HttpPost("login")]
+        [HttpPost("UserLogin")]
         public IActionResult UserLogin(UserLoginModel userLog)
         {
             try
@@ -52,7 +52,7 @@ namespace BookStore.Controllers
                 throw;
             }
         }
-        [HttpPost("login/{Email}")]
+        [HttpPost("ForgotPassword/{Email}")]
         public IActionResult ForgotPassword(string Email)
         {
             try

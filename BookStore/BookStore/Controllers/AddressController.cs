@@ -64,7 +64,7 @@ namespace BookStore.Controllers
             }
         }
         [Authorize(Roles = Role.User)]
-        [HttpPost("UpdateAddress")]
+        [HttpPut("UpdateAddress")]
         public IActionResult UpdateAddress(AddressModel addressModel)
         {
             try
